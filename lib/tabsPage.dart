@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_analytics/observer.dart';
 
-
 class TabsPage extends StatefulWidget {
   TabsPage(this.observer);
 
