@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'tabsPage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -93,8 +94,14 @@ class _FirebaseAppState extends State<FirebaseApp> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.tab),
-        onPressed: () {},
+        child: const Icon(Icons.tab),
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute<TabsPage>(
+              settings: RouteSettings(name: '/tab'),
+              builder: (BuildContext context) {
+                return TabsPage(observer);
+              }));
+        },
       ),
     );
   }
