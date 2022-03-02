@@ -12,8 +12,54 @@ class MemoAddPage extends StatefulWidget {
 }
 
 class _MemoAddPageState extends State<MemoAddPage> {
+  TextEditingController? titleController;
+  TextEditingController? contentController;
+
+  @override
+  void initState(){
+    super.initState();
+    titleController = TextEditingController();
+    contentController = TextEditingController();
+  }
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('메모추가'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Center(
+          child: Column(
+            children: [
+              TextField(
+                controller: titleController,
+                decoration: InputDecoration(
+                  labelText: '제목', fillColor: Colors.blueAccent
+                ),
+              ),
+              Expanded(
+                  child: TextField(
+                    controller: contentController,
+                    keyboardType: TextInputType.multiline,
+                    maxLines: 100,
+                    decoration: InputDecoration(
+                      labelText: '내용'
+                    ),
+                  ),
+              ),
+              MaterialButton(
+                  onPressed: (){
+                    widget.reference
+                        .push()
+                        .set(value)
+
+                  }
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

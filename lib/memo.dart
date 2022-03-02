@@ -11,9 +11,9 @@ class Memo {
 
   Memo.fromSnapShot(DataSnapshot snapshot)
       : key = snapshot.key,
-        title = snapshot.value['title'],
-        content = snapshot.value['content'],
-        createTime = snapshot.value['createTime'];
+        title = (snapshot.value as dynamic)['title'],
+        content = (snapshot.value as dynamic)['content'],
+        createTime = (snapshot.value as dynamic)['createTime'];
   toJson(){
     return{
       'title': title,
