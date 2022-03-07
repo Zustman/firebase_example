@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'memo.dart';
 import 'memoAdd.dart';
+import 'memoDetail.dart';
 
 class MemoPage extends StatefulWidget {
   const MemoPage({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class _MemoPageState extends State<MemoPage> {
                           padding: EdgeInsets.only(top:20.0, bottom: 20.0),
                           child: SizedBox(
                             child: GestureDetector(
-                              onTap: (){
+                              onTap: () {
 
                               },
                               onLongPress: (){

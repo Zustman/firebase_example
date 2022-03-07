@@ -5,6 +5,7 @@ import 'memo.dart';
 class MemoAddPage extends StatefulWidget {
   //const MemoAddPage({Key? key}) : super(key: key);
   final DatabaseReference reference;
+
   MemoAddPage(this.reference);
 
   @override
@@ -16,11 +17,12 @@ class _MemoAddPageState extends State<MemoAddPage> {
   TextEditingController? contentController;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     titleController = TextEditingController();
     contentController = TextEditingController();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,26 +37,28 @@ class _MemoAddPageState extends State<MemoAddPage> {
               TextField(
                 controller: titleController,
                 decoration: InputDecoration(
-                  labelText: '제목', fillColor: Colors.blueAccent
-                ),
+                    labelText: '제목', fillColor: Colors.blueAccent),
               ),
               Expanded(
-                  child: TextField(
-                    controller: contentController,
-                    keyboardType: TextInputType.multiline,
-                    maxLines: 100,
-                    decoration: InputDecoration(
-                      labelText: '내용'
-                    ),
-                  ),
+                child: TextField(
+                  controller: contentController,
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 100,
+                  decoration: InputDecoration(labelText: '내용'),
+                ),
               ),
               MaterialButton(
-                  onPressed: (){
-                    widget.reference
-                        .push()
-                        .set(value)
-
-                  }
+                onPressed: () {
+                  widget.reference.push().set(Memo(
+                    titleController!.value.text,
+                    contentController!.value.text,
+                    DateTime.now().toIso8601String()
+                  ).toJson()).then((_) {
+                    Navigator.of(context).pop();
+                  });
+                },
+                child: Text('저장하기'),
+                shape: OutlineInputBorder(borderRadius: BorderRadius.circular(1)),
               )
             ],
           ),

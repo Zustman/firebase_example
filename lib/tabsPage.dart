@@ -55,6 +55,12 @@ class _TabsPage extends State<TabsPage>
   }
 
   @override
+  void dispose(){
+    observer.unsubscribe(this);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
